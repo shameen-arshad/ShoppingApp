@@ -32,7 +32,7 @@ namespace MvcApplication1.Controllers
             var m = db.Products.Where(u => u.PId.Equals(pId)).FirstOrDefault();
             db.Products.Remove(m);
             db.SaveChanges();
-            var temp = new AdminHomeController();
+       
             if ((Request.Form["mpid"]) == "Index")
             {
                 return RedirectToAction("Index", "AdminHome");
