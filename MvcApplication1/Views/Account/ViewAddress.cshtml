@@ -1,0 +1,66 @@
+﻿@model MvcApplication1.Models.PersonInfo
+@{
+    ViewBag.Title = "Address Details";
+}
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1> 
+</hgroup>
+
+@using (Html.BeginForm("UpdateInfo", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Customer Details</legend>
+        <ol>
+               @{
+                <input type="hidden" value="@Model.PIId" name="pid" />
+                <input type="hidden" value="@Model.UserId" name="userid" />
+                
+            }
+            <li>
+                @Html.LabelFor(m => m.FirstName)
+              <p>@Model.FirstName</p>
+            </li>
+            <li>
+                @Html.LabelFor(m => m.LastName)
+                 <p>@Model.LastName</p>
+            
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Address)
+                 <p>@Model.Address</p>
+             
+            </li>
+            <li>
+                @Html.LabelFor(m => m.MobileNo)
+                 <p>@Model.MobileNo</p>
+            
+            </li>
+            <li>
+                @Html.LabelFor(m => m.City)
+                 <p>@Model.City</p>
+               
+            </li>
+            <li>
+
+                @Html.LabelFor(m => m.Country)
+                 <p>@Model.Country</p>
+             
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PostalCode)
+                 <p>@Model.PostalCode</p>
+              
+            </li>
+        </ol>
+        <input type="submit" value="Update" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

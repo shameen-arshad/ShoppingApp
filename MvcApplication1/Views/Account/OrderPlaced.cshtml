@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "OrderPlaced";
+}
+
+<h2>your Order has been placed
+    @if (TempData["Success"] != null)
+    {
+        <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+    }
+</h2>
+
+

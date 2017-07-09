@@ -1,0 +1,87 @@
+﻿@model MvcApplication1.Models.Product
+@{
+    ViewBag.Title = "Update Product";
+}
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+   
+</hgroup>
+
+@using (Html.BeginForm("Update", "Product", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>product Details</legend>
+        <ol>
+            @{
+                <input type="hidden" value="@Model.PId" name="pid" />
+                <input type="hidden" value="@Model.PImage" name="pimg" />
+                
+            }
+
+            <li>
+                @Html.LabelFor(m => m.PName)
+                @Html.TextBoxFor(m => m.PName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Price)
+                @Html.TextBoxFor(m => m.Price)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PCategory)
+                @{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+         {
+             Text = "Kids",
+             Value = "Kids"
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "Men",
+             Value = "Men",
+
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "Women",
+             Value = "Women"
+         });
+                }
+
+                @Html.DropDownListFor(m => m.PCategory, listItems, "-- Select Status --")
+
+
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PImage)
+                <img id="blah" src="@Model.PImage" style="width:150px;height:150px;" />
+                <br>
+                <input type='file' name="pic" onchange="readURL(this);" />
+            </li>
+        </ol>
+        <input type="submit" value="Update" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

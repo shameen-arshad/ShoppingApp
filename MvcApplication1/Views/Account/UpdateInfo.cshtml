@@ -1,0 +1,91 @@
+﻿@model MvcApplication1.Models.PersonInfo
+@{
+    ViewBag.Title = "Update Info";
+}
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1> 
+</hgroup>
+
+@using (Html.BeginForm("UpdatePerson", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Customer Details</legend>
+        <ol>
+               @{
+                <input type="hidden" value="@Model.PIId" name="pid" />
+                <input type="hidden" value="@Model.UserId" name="userid" />
+                
+            }
+            <li>
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Address)
+                @Html.TextBoxFor(m => m.Address)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.MobileNo)
+                @Html.TextBoxFor(m => m.MobileNo)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.City)
+                @{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+         {
+             Text = "Lahore",
+             Value = "Lahore"
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "Karachi",
+             Value = "Karachi",
+            
+         });
+    listItems.Add(new SelectListItem
+         {
+             Text = "Islamabad",
+             Value = "Islamabad"
+         });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Peshawar",
+        Value = "Peshawar"
+    });
+    listItems.Add(new SelectListItem
+    {
+        Text = "Quetta",
+        Value = "Quetta"
+    });
+                }
+
+                @Html.DropDownListFor(m => m.City, listItems, "-- Select City --")
+
+
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Country)
+                @Html.TextBoxFor(m => m.Country)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.PostalCode)
+                @Html.TextBoxFor(m => m.PostalCode)
+            </li>
+        </ol>
+        <input type="submit" value="Save" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

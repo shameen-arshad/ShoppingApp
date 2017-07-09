@@ -1,0 +1,14 @@
+﻿@model List <MvcApplication1.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<hgroup class="title">
+   <div class"Product" style="width:970px;height:500px;">
+   <img src="@Model[0].PImage" alt="@Model[0].PName" style="width:970px;height:300px;">
+       <h2>@Model[0].Price</h2>
+       <h2>@Model[0].PName</h2>
+
+   </div>
+</hgroup>
