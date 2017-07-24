@@ -18,23 +18,23 @@ namespace MvcApplication1.Controllers
         public ActionResult Men()
         {
             var FootDB = new FootWearDb();
-            var p = FootDB.Products.Where(s => s.PCategory =="Men");
-            return View( p);
+            var p = FootDB.Products.Where(s => s.PCategory == "Men");
+            return View(p);
         }
         public ActionResult Women()
         {
             var FootDB = new FootWearDb();
-            var p = FootDB.Products.Where(s => s.PCategory =="Women");
+            var p = FootDB.Products.Where(s => s.PCategory == "Women");
 
-            return View( p);
+            return View(p);
         }
 
         public ActionResult Kids()
         {
             var FootDB = new FootWearDb();
-            var p = FootDB.Products.Where(s => s.PCategory =="Kids");
+            var p = FootDB.Products.Where(s => s.PCategory == "Kids");
 
-            return View( p);
+            return View(p);
         }
     }
 }
